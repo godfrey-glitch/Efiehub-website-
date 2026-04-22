@@ -16,7 +16,7 @@ function HeroCanvas() {
     const script = document.createElement("script");
     script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
     script.onload = () => {
-      // @ts-expect-error global THREE
+      
       const THREE = window.THREE;
       if (!THREE || !canvas) return;
       const scene = new THREE.Scene();
@@ -46,7 +46,7 @@ function HeroCanvas() {
       const pg=new THREE.BufferGeometry(); pg.setAttribute("position",new THREE.BufferAttribute(pa,3));
       const pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0x7dd3fc,size:0.06,transparent:true,opacity:0.7})); scene.add(pts);
       const grid=new THREE.GridHelper(30,30,0x0ea5e9,0x0ea5e9);
-      // @ts-expect-error material
+      
       grid.material.opacity=0.07; grid.material.transparent=true; grid.position.y=-2.5; scene.add(grid);
       const onResize=()=>{if(!canvas||!renderer)return;camera.aspect=canvas.clientWidth/canvas.clientHeight;camera.updateProjectionMatrix();renderer.setSize(canvas.clientWidth,canvas.clientHeight);};
       window.addEventListener("resize",onResize);
